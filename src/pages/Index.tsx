@@ -3,7 +3,7 @@ import TourPackages from "@/components/TourPackages";
 import Transportation from "@/components/Transportation";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import Adventures from "@/components/Adventures";
+
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import WhatsAppConcierge from "@/components/WhatsAppConcierge";
@@ -16,7 +16,7 @@ const Index = () => {
       <Transportation />
       <Testimonials />
       <FAQ />
-      <Adventures />
+
       <CTASection />
       <Footer />
       <WhatsAppConcierge />

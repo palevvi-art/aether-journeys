@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 interface Testimonial {
     id: number;
@@ -8,33 +8,33 @@ interface Testimonial {
     role: string;
     avatar: string;
     quote: string;
-    background: string;
+    rating: number;
 }
 
 const testimonials: Testimonial[] = [
     {
         id: 1,
-        name: "Sarah Mitchell",
-        role: "Travel Blogger, Australia",
+        name: "Sophia Harper",
+        role: "Traveler & Writer",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
-        quote: "Aether made our Raja Ampat diving trip absolutely magical. The local guides knew the best spots not on any tourist map. Truly an unforgettable Indonesian adventure!",
-        background: "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=1200&q=80",
+        quote: "Ethan, Lina & Oliver were amazing tour guides! Their knowledge of the local culture and ability to tell stories made our trip unforgettable.",
+        rating: 5.0,
     },
     {
         id: 2,
         name: "James Chen",
         role: "Photographer, Singapore",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
-        quote: "The Mount Bromo sunrise tour exceeded all expectations. Aether's attention to detail and seamless transportation across Java made everything so easy. Highly recommended!",
-        background: "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=1200&q=80",
+        quote: "The Mount Bromo sunrise tour exceeded all expectations. Aether's attention to detail and seamless transportation across Java made everything so easy.",
+        rating: 4.9,
     },
     {
         id: 3,
         name: "Emma Rodriguez",
         role: "Adventure Traveler, Spain",
         avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80",
-        quote: "From Komodo dragons to pristine beaches, Aether crafted the perfect Indonesia itinerary. Their team's local expertise and warm hospitality made us feel like family.",
-        background: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1200&q=80",
+        quote: "From Komodo dragons to pristine beaches, Aether crafted the perfect Indonesia itinerary. Their team's local expertise made us feel like family.",
+        rating: 5.0,
     },
 ];
 
@@ -55,8 +55,19 @@ const Testimonials = () => {
     };
 
     return (
-        <section ref={sectionRef} className="py-20 section-cream" id="testimonials">
-            <div className="container max-w-7xl mx-auto px-6 md:px-12">
+        <section ref={sectionRef} className="relative py-24 overflow-hidden rounded-3xl mx-4 md:mx-8 my-8" id="testimonials">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+                <img
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80"
+                    alt="Mountain landscape"
+                    className="w-full h-full object-cover"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-slate-900/60" />
+            </div>
+
+            <div className="container max-w-5xl mx-auto px-6 md:px-12 relative z-10">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -64,10 +75,13 @@ const Testimonials = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <p className="text-label text-primary mb-2">Testimonials</p>
-                    <h2 className="heading-section text-foreground">
-                        What Our Travelers Say
+                    <p className="text-sm uppercase tracking-widest text-white/60 mb-3">Testimonials</p>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                        What Our Guests Say
                     </h2>
+                    <p className="text-white/60 max-w-2xl mx-auto">
+                        Real experiences from our travelers. See how they enjoyed a trip specially designed to provide the best experience.
+                    </p>
                 </motion.div>
 
                 {/* Testimonial Card */}
@@ -75,49 +89,46 @@ const Testimonials = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative max-w-5xl mx-auto"
+                    className="max-w-2xl mx-auto"
                 >
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={current.id}
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ duration: 0.5 }}
-                            className="grid md:grid-cols-2 gap-8 items-center bg-white rounded-3xl overflow-hidden shadow-lg"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.4 }}
+                            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8"
                         >
-                            {/* Image */}
-                            <div className="relative h-[300px] md:h-[400px]">
-                                <img
-                                    src={current.background}
-                                    alt="Destination"
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent" />
-                            </div>
-
-                            {/* Content */}
-                            <div className="p-8 md:pr-12">
-                                <Quote className="w-10 h-10 text-primary/20 mb-4" />
-                                <p className="text-lg text-foreground mb-8 leading-relaxed">
-                                    "{current.quote}"
-                                </p>
-
+                            {/* Header with avatar and rating */}
+                            <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-4">
                                     <img
                                         src={current.avatar}
                                         alt={current.name}
-                                        className="w-14 h-14 rounded-full object-cover border-2 border-primary"
+                                        className="w-12 h-12 rounded-full object-cover border-2 border-white/30"
                                     />
                                     <div>
-                                        <h4 className="font-semibold text-foreground">
+                                        <h4 className="font-semibold text-white">
                                             {current.name}
                                         </h4>
-                                        <p className="text-sm text-muted-foreground">
+                                        <p className="text-sm text-white/60">
                                             {current.role}
                                         </p>
                                     </div>
                                 </div>
+                                <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full">
+                                    <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                                    <span className="text-white text-sm font-medium">/ {current.rating.toFixed(1)}</span>
+                                </div>
+                            </div>
+
+                            {/* Quote */}
+                            <div className="relative">
+                                <span className="text-4xl font-serif text-amber-400 leading-none">"</span>
+                                <p className="text-white/90 text-lg leading-relaxed mt-2">
+                                    {current.quote}
+                                </p>
                             </div>
                         </motion.div>
                     </AnimatePresence>
@@ -126,28 +137,14 @@ const Testimonials = () => {
                     <div className="flex items-center justify-center gap-4 mt-8">
                         <button
                             onClick={() => navigate("prev")}
-                            className="btn-arrow"
+                            className="w-12 h-12 rounded-full bg-slate-800 border border-white/20 flex items-center justify-center text-white hover:bg-slate-700 transition-colors"
                         >
                             <ChevronLeft className="w-5 h-5" />
                         </button>
 
-                        {/* Dots */}
-                        <div className="flex items-center gap-2">
-                            {testimonials.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentIndex(index)}
-                                    className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
-                                            ? "w-6 bg-primary"
-                                            : "bg-muted-foreground/30"
-                                        }`}
-                                />
-                            ))}
-                        </div>
-
                         <button
                             onClick={() => navigate("next")}
-                            className="btn-arrow"
+                            className="w-12 h-12 rounded-full bg-slate-800 border border-white/20 flex items-center justify-center text-white hover:bg-slate-700 transition-colors"
                         >
                             <ChevronRight className="w-5 h-5" />
                         </button>

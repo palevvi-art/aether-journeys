@@ -7,7 +7,7 @@ const CTASection = () => {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     return (
-        <section ref={sectionRef} className="relative py-32 overflow-hidden">
+        <section ref={sectionRef} className="relative py-32 overflow-hidden rounded-t-[2.5rem]">
             {/* Background Image */}
             <div className="absolute inset-0">
                 <img
@@ -21,7 +21,7 @@ const CTASection = () => {
 
             {/* Content */}
             <div className="container max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                <div className="max-w-2xl">
+                <div className="max-w-2xl mx-auto text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -31,14 +31,14 @@ const CTASection = () => {
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
                             Ready to Explore Indonesia? Your Dream Adventure Starts Here!
                         </h2>
-                        <p className="text-white/80 mb-8 max-w-md">
+                        <p className="text-white/80 mb-8 max-w-md mx-auto">
                             From the temples of Borobudur to the beaches of Bali, the dragons of Komodo to the reefs of Raja Ampat. Let Aether craft your perfect Indonesian journey.
                         </p>
 
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary font-semibold rounded-full hover:shadow-xl transition-shadow"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-white/20 backdrop-blur-md border border-white/30 text-white font-semibold rounded-full hover:bg-white/30 hover:shadow-xl transition-all shadow-lg"
                         >
                             Plan Your Trip
                             <ArrowRight className="w-5 h-5" />
