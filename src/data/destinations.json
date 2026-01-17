@@ -1,0 +1,146 @@
+[
+  {
+    "id": "santorini",
+    "title": "Santorini Serenity",
+    "mood_tag": ["solitude"],
+    "price_start": 3500,
+    "description": "Escape to the iconic white-washed cliffs of Santorini, where time stands still and the Aegean Sea stretches endlessly before you.",
+    "itinerary": [
+      {
+        "day": 1,
+        "activity": "Private sunset yacht cruise around the caldera with champagne and Mediterranean cuisine",
+        "image": "santorini"
+      },
+      {
+        "day": 2,
+        "activity": "Morning spa ritual at your villa followed by a private wine tasting at Santo Wines",
+        "image": "santorini"
+      },
+      {
+        "day": 3,
+        "activity": "Explore ancient Akrotiri ruins with a private archaeologist guide",
+        "image": "santorini"
+      }
+    ]
+  },
+  {
+    "id": "kyoto",
+    "title": "Kyoto Awakening",
+    "mood_tag": ["spiritual"],
+    "price_start": 4200,
+    "description": "Journey through ancient temples and zen gardens, discovering the soul of Japan in its former imperial capital.",
+    "itinerary": [
+      {
+        "day": 1,
+        "activity": "Dawn meditation session at Kinkaku-ji followed by traditional kaiseki breakfast",
+        "image": "kyoto"
+      },
+      {
+        "day": 2,
+        "activity": "Private tea ceremony with a master in the historic Gion district",
+        "image": "kyoto"
+      },
+      {
+        "day": 3,
+        "activity": "Forest bathing in the bamboo groves of Arashiyama",
+        "image": "kyoto"
+      }
+    ]
+  },
+  {
+    "id": "swiss-alps",
+    "title": "Alpine Expedition",
+    "mood_tag": ["adventure"],
+    "price_start": 5800,
+    "description": "Conquer majestic peaks and embrace the raw beauty of the Swiss Alps from a luxury mountain retreat.",
+    "itinerary": [
+      {
+        "day": 1,
+        "activity": "Helicopter transfer to your private chalet with panoramic mountain views",
+        "image": "alps"
+      },
+      {
+        "day": 2,
+        "activity": "Guided summit climb with expert mountaineers, ending with fondue at 3,000m",
+        "image": "alps"
+      },
+      {
+        "day": 3,
+        "activity": "Paragliding over glacial valleys followed by thermal spa immersion",
+        "image": "alps"
+      }
+    ]
+  },
+  {
+    "id": "morocco",
+    "title": "Marrakech Mystique",
+    "mood_tag": ["spiritual", "adventure"],
+    "price_start": 2800,
+    "description": "Lose yourself in the labyrinthine souks and find peace in the tranquil riads of this ancient city.",
+    "itinerary": [
+      {
+        "day": 1,
+        "activity": "Private riad check-in with traditional hammam and massage ritual",
+        "image": "morocco"
+      },
+      {
+        "day": 2,
+        "activity": "Sunrise hot air balloon over the Atlas Mountains with Berber breakfast",
+        "image": "morocco"
+      },
+      {
+        "day": 3,
+        "activity": "Guided meditation in the Majorelle Garden followed by sunset camel trek",
+        "image": "morocco"
+      }
+    ]
+  },
+  {
+    "id": "serengeti",
+    "title": "Serengeti Safari",
+    "mood_tag": ["adventure"],
+    "price_start": 7500,
+    "description": "Witness the greatest wildlife spectacle on Earth from the comfort of a luxury tented camp.",
+    "itinerary": [
+      {
+        "day": 1,
+        "activity": "Bush plane arrival and afternoon game drive spotting the Big Five",
+        "image": "safari"
+      },
+      {
+        "day": 2,
+        "activity": "Dawn balloon safari over the migration followed by champagne bush breakfast",
+        "image": "safari"
+      },
+      {
+        "day": 3,
+        "activity": "Walking safari with Maasai guides and sundowners overlooking the savanna",
+        "image": "safari"
+      }
+    ]
+  },
+  {
+    "id": "norway",
+    "title": "Nordic Solace",
+    "mood_tag": ["solitude", "adventure"],
+    "price_start": 4800,
+    "description": "Experience the dramatic beauty of Norwegian fjords under the dancing northern lights.",
+    "itinerary": [
+      {
+        "day": 1,
+        "activity": "Private fjord cruise to your waterfront cabin with aurora viewing deck",
+        "image": "norway"
+      },
+      {
+        "day": 2,
+        "activity": "Guided glacier hike followed by traditional Norwegian sauna and cold plunge",
+        "image": "norway"
+      },
+      {
+        "day": 3,
+        "activity": "Midnight sun kayaking through ancient Viking waterways",
+        "image": "norway"
+      }
+    ]
+  }
+]
