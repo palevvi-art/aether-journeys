@@ -85,7 +85,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex-1"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light italic text-foreground leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Your Next<br />
               <span className="text-primary">Adventure</span> Awaits
             </h1>
