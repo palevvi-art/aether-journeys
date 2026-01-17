@@ -117,15 +117,21 @@
 }
 
 @layer components {
+  /* Hero Headline - Split Animation Ready */
+  .hero-headline {
+    font-family: var(--font-serif);
+    @apply text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9];
+  }
+
   /* Hero Typography */
   .heading-display {
     font-family: var(--font-serif);
-    @apply text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-none;
+    @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none;
   }
 
   .heading-section {
     font-family: var(--font-serif);
-    @apply text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
   }
 
   .text-body {
