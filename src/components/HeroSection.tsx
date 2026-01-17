@@ -111,27 +111,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Images with Ken Burns Effect */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeVibe}
-          variants={kenBurnsVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="absolute inset-0"
-        >
-          <motion.img
-            src={vibeContent[activeVibe].image}
-            alt={activeVibe}
-            className="h-full w-full object-cover"
-            animate={{ scale: [1, 1.08] }}
-            transition={{ duration: 15, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/20 to-background" />
-        </motion.div>
-      </AnimatePresence>
+    <section className="relative h-screen w-full overflow-hidden bg-white">
+      {/* Clean White Background with subtle gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-white" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
@@ -142,7 +124,7 @@ const HeroSection = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="absolute top-8 left-8"
         >
-          <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
+          <span className="font-serif text-2xl font-bold tracking-tight text-gray-900">
             Aether<span className="text-primary">.</span>
           </span>
         </motion.div>
@@ -162,7 +144,7 @@ const HeroSection = () => {
             <a
               key={item.label}
               href={item.href}
-              className="text-label text-foreground/80 hover:text-primary transition-colors"
+              className="text-label text-gray-700 hover:text-primary transition-colors"
             >
               {item.label}
             </a>
@@ -192,7 +174,7 @@ const HeroSection = () => {
                 initial="enter"
                 animate="animate"
                 exit="exit"
-                className="hero-headline"
+                className="hero-headline text-gray-900"
               >
                 {vibeContent[activeVibe].headline[0]}
               </motion.h1>
@@ -221,7 +203,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="text-lg md:text-xl mb-6 text-foreground/60 font-light tracking-wide"
+              className="text-lg md:text-xl mb-6 text-gray-600 font-light tracking-wide"
             >
               {vibeContent[activeVibe].subline}
             </motion.p>
@@ -237,7 +219,7 @@ const HeroSection = () => {
               transition={{ duration: 0.4, delay: 0.6 }}
               className="mb-14"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-primary/30 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-600">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 {vibeContent[activeVibe].location}
               </span>
@@ -264,21 +246,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="flex flex-col items-center"
-          >
-            <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
-          </motion.div>
-        </motion.div>
+
       </div>
     </section>
   );
