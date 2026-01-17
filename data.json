@@ -5,20 +5,20 @@
         "location": "Ubud, Bali",
         "price": 18500000,
         "mood": "Solitude",
-        "hero_image": "/ubud-bali-hero.png",
+        "hero_image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&q=80",
         "description": "Temukan ketenangan jiwa di jantung spiritualitas Bali, di mana kesunyian berbicara lebih lantang dari kata-kata.",
         "itinerary": [
             {
                 "day": 1,
                 "activity": "VIP Airport Transfer & Mandapa Check-in",
                 "description": "Penjemputan eksklusif dari Bandara Ngurah Rai dengan armada premium. Check-in di Mandapa, a Ritz-Carlton Reserve, dengan welcome ceremony tradisional Bali.",
-                "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"
+                "image": "https://images.unsplash.com/photo-1559628233-100c798642d4?w=800&q=80"
             },
             {
                 "day": 2,
                 "activity": "Private Temple Blessing & Sound Healing",
                 "description": "Upacara pemberkatan pribadi di pura tersembunyi, dilanjutkan dengan sesi sound healing menggunakan singing bowl Tibet di tepi sungai Ayung.",
-                "image": "https://images.unsplash.com/photo-1544644181-1484b3fdfc62"
+                "image": "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80"
             }
         ]
     },
@@ -28,20 +28,20 @@
         "location": "Raja Ampat, Papua",
         "price": 82000000,
         "mood": "Adventure",
-        "hero_image": "https://images.unsplash.com/photo-1516690561799-46d8f74f90f6",
+        "hero_image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&q=80",
         "description": "Ekspedisi epik mengarungi surga bahari terakhir di bumi, di mana laut menyimpan rahasia yang belum terungkap.",
         "itinerary": [
             {
                 "day": 1,
                 "activity": "Boarding Luxury Phinisi in Sorong",
                 "description": "Perjalanan dimulai dengan boarding kapal Phinisi mewah di pelabuhan Sorong. Nikmati welcome dinner dengan panorama sunset spektakuler.",
-                "image": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd"
+                "image": "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80"
             },
             {
                 "day": 2,
                 "activity": "Sunrise Trekking at Piaynemo",
                 "description": "Trekking dini hari menuju puncak Piaynemo untuk menyaksikan matahari terbit di atas gugusan karst ikonik Raja Ampat.",
-                "image": "https://images.unsplash.com/photo-1534469647711-a3a88c579d47"
+                "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
             }
         ]
     }

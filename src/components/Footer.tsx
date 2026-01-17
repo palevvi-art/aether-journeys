@@ -1,73 +1,75 @@
 import { motion } from "framer-motion";
+import { Send, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 const footerLinks = {
-  destinasi: [
-    { label: "Bali", href: "#" },
-    { label: "Raja Ampat", href: "#" },
-    { label: "Lombok", href: "#" },
-    { label: "Komodo", href: "#" },
+  explore: [
+    { label: "Destinations", href: "#" },
+    { label: "Tour Packages", href: "#tours" },
+    { label: "Travel Blog", href: "#" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Photo Gallery", href: "#" },
   ],
-  layanan: [
-    { label: "Perjalanan Privat", href: "#" },
-    { label: "Paket Honeymoon", href: "#" },
-    { label: "Retreat Korporat", href: "#" },
-    { label: "Petualangan Keluarga", href: "#" },
+  about: [
+    { label: "About Us", href: "#about" },
+    { label: "Our Team", href: "#team" },
+    { label: "Careers", href: "#" },
+    { label: "Our Story", href: "#" },
+    { label: "Testimonials", href: "#testimonials" },
   ],
-  perusahaan: [
-    { label: "Tentang Kami", href: "#about" },
-    { label: "Karir", href: "#" },
-    { label: "Kebijakan Privasi", href: "#" },
-    { label: "Syarat & Ketentuan", href: "#" },
+  support: [
+    { label: "Contact Us", href: "#contact" },
+    { label: "Help Center", href: "#" },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms and Conditions", href: "#" },
   ],
 };
 
 const Footer = () => {
   return (
-    <footer className="bg-background border-t border-border" id="about">
-      <div className="container max-w-6xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
+    <footer className="bg-primary text-primary-foreground" id="contact">
+      <div className="container max-w-7xl mx-auto px-6 md:px-12 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          {/* Newsletter */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:col-span-1"
+            className="lg:col-span-2"
           >
-            <span className="font-serif text-3xl font-bold tracking-tight text-foreground block mb-6">
-              Aether<span className="text-primary">.</span>
-            </span>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Menghadirkan pengalaman perjalanan eksklusif yang dirancang khusus untuk jiwa
-              pencari keindahan dan ketenangan.
+            <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+            <p className="text-sm opacity-80 mb-6 max-w-sm">
+              Sign up to get exclusive offers, travel tips, and destination inspiration straight to your inbox!
             </p>
-            <div className="flex gap-4">
-              {["Instagram", "LinkedIn", "YouTube"].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  {social}
-                </a>
-              ))}
-            </div>
+            <form className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 placeholder:text-white/50 text-white text-sm focus:outline-none focus:border-white/40"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 rounded-full bg-white text-primary font-medium flex items-center gap-2 hover:bg-white/90 transition-colors"
+              >
+                Submit
+              </button>
+            </form>
           </motion.div>
 
-          {/* Destinasi */}
+          {/* Explore */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-label text-foreground mb-6">Destinasi</h4>
+            <h4 className="font-semibold mb-4">Explore</h4>
             <ul className="space-y-3">
-              {footerLinks.destinasi.map((link) => (
+              {footerLinks.explore.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-sm opacity-80 hover:opacity-100 transition-opacity"
                   >
                     {link.label}
                   </a>
@@ -76,20 +78,20 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Layanan */}
+          {/* About */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-label text-foreground mb-6">Layanan</h4>
+            <h4 className="font-semibold mb-4">About</h4>
             <ul className="space-y-3">
-              {footerLinks.layanan.map((link) => (
+              {footerLinks.about.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-sm opacity-80 hover:opacity-100 transition-opacity"
                   >
                     {link.label}
                   </a>
@@ -98,20 +100,20 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Perusahaan */}
+          {/* Support */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-label text-foreground mb-6">Perusahaan</h4>
+            <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-3">
-              {footerLinks.perusahaan.map((link) => (
+              {footerLinks.support.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-sm opacity-80 hover:opacity-100 transition-opacity"
                   >
                     {link.label}
                   </a>
@@ -127,14 +129,30 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4"
+          className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-muted-foreground text-sm">
-            © 2026 Aether Travel. Hak Cipta Dilindungi.
+          <div className="flex items-center gap-4">
+            <span className="text-xl font-medium italic">
+              Aether
+            </span>
+          </div>
+
+          <p className="text-sm opacity-70">
+            © 2026 Aether. All Rights Reserved.
           </p>
-          <p className="text-muted-foreground text-xs">
-            Dirancang dengan ♥ untuk para penjelajah Indonesia
-          </p>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
+            {[Facebook, Twitter, Instagram, Youtube].map((Icon, index) => (
+              <a
+                key={index}
+                href="#"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
         </motion.div>
       </div>
     </footer>

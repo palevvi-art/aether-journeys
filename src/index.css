@@ -1,100 +1,71 @@
-@import "@fontsource/cormorant-garamond/400.css";
-@import "@fontsource/cormorant-garamond/500.css";
-@import "@fontsource/cormorant-garamond/600.css";
-@import "@fontsource/cormorant-garamond/700.css";
-@import "@fontsource/lato/300.css";
-@import "@fontsource/lato/400.css";
-@import "@fontsource/lato/700.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-/* Aether Travel Design System - Luxury Magazine Aesthetic */
+/* WayFarer Travel Design System - Clean Modern Aesthetic */
 
 @layer base {
   :root {
-    /* Core Palette */
-    --background: 0 0% 4%;
-    /* Rich Black #0A0A0A */
-    --foreground: 0 0% 96%;
-    /* Off-White #F5F5F5 */
+    /* Core Palette - Navy/Teal Theme */
+    --background: 0 0% 100%;
+    /* White */
+    --foreground: 210 25% 20%;
+    /* Dark Navy Text */
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 25% 20%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 25% 20%;
 
-    /* Gold Accent - #D4AF37 */
-    --primary: 43 66% 52%;
-    --primary-foreground: 0 0% 4%;
+    /* Primary - Dark Teal/Navy #1a3a4a */
+    --primary: 197 47% 20%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 96%;
+    /* Secondary - Light Cream */
+    --secondary: 40 30% 96%;
+    --secondary-foreground: 210 25% 20%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 50%;
 
-    --accent: 43 66% 52%;
-    --accent-foreground: 0 0% 4%;
+    /* Accent - Warm Coral #d4956a */
+    --accent: 28 55% 62%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 15%;
-    --ring: 43 66% 52%;
+    --border: 210 20% 90%;
+    --input: 210 20% 94%;
+    --ring: 197 47% 20%;
 
-    --radius: 0.25rem;
+    --radius: 0.75rem;
 
-    /* Typography - Elegant Travel Fonts */
-    --font-serif: "Cormorant Garamond", Georgia, serif;
-    --font-sans: "Lato", system-ui, sans-serif;
-
-    /* Custom Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(43 66% 52%), hsl(38 70% 45%));
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 8%));
-    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 4% / 0.8) 100%);
+    /* Typography */
+    --font-sans: "Inter", system-ui, sans-serif;
 
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(43 66% 52% / 0.15);
-    --shadow-soft: 0 4px 30px hsl(0 0% 0% / 0.3);
-    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.4);
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 8px 10px -6px hsl(0 0% 0% / 0.1);
 
-    /* Sidebar (keeping defaults for compatibility) */
-    --sidebar-background: 0 0% 6%;
-    --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 43 66% 52%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 96%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 43 66% 52%;
-  }
-
-  .dark {
-    /* Same as root for this luxury dark theme */
-    --background: 0 0% 4%;
-    --foreground: 0 0% 96%;
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 96%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 43 66% 52%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 96%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 43 66% 52%;
-    --accent-foreground: 0 0% 4%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 15%;
-    --ring: 43 66% 52%;
+    /* Sidebar */
+    --sidebar-background: 197 47% 20%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 197 47% 20%;
+    --sidebar-accent: 197 47% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 197 47% 25%;
+    --sidebar-ring: 0 0% 100%;
   }
 }
 
@@ -118,65 +89,150 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-serif);
-    @apply tracking-tight;
+    font-family: var(--font-sans);
+    @apply font-semibold tracking-tight;
   }
 }
 
 @layer components {
 
-  /* Hero Headline - Split Animation Ready */
+  /* Hero Headline */
   .hero-headline {
-    font-family: var(--font-serif);
-    @apply text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9];
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight;
   }
 
-  /* Hero Typography */
-  .heading-display {
-    font-family: var(--font-serif);
-    @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none;
-  }
-
+  /* Section Headings */
   .heading-section {
-    font-family: var(--font-serif);
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight;
   }
 
+  .heading-subsection {
+    @apply text-lg md:text-xl font-semibold;
+  }
+
+  /* Text Utilities */
   .text-body {
-    font-family: var(--font-sans);
-    @apply text-base md:text-lg font-light leading-relaxed text-muted-foreground;
+    @apply text-base font-normal leading-relaxed text-muted-foreground;
   }
 
   .text-label {
-    font-family: var(--font-sans);
-    @apply text-xs md:text-sm uppercase tracking-[0.2em] font-medium;
+    @apply text-xs uppercase tracking-[0.15em] font-medium text-muted-foreground;
   }
 
-  /* Gold Accent Line */
-  .accent-line {
-    @apply w-12 h-px bg-primary;
+  /* Primary Button - Navy with rounded */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-300;
+    @apply bg-primary text-primary-foreground rounded-full;
+    @apply hover:bg-primary/90 hover:shadow-lg;
+    @apply active:scale-[0.98];
   }
 
-  /* Card with Glow */
-  .card-glow {
-    @apply relative overflow-hidden rounded-sm;
-    box-shadow: var(--shadow-card);
-    transition: box-shadow 0.5s ease, transform 0.5s ease;
+  /* Outline Button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-300;
+    @apply border-2 border-primary text-primary rounded-full;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply active:scale-[0.98];
   }
 
-  .card-glow:hover {
-    box-shadow: var(--shadow-glow), var(--shadow-card);
-    transform: translateY(-4px);
+  /* Ghost Button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-200;
+    @apply text-foreground hover:bg-muted rounded-lg;
   }
 
-  /* Parallax Container */
-  .parallax-container {
-    @apply relative overflow-hidden;
+  /* Card Styles */
+  .card-elevated {
+    @apply bg-card rounded-2xl overflow-hidden;
+    box-shadow: var(--shadow-lg);
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
   }
 
-  .parallax-bg {
-    @apply absolute inset-0 w-full h-[120%] object-cover;
-    will-change: transform;
+  .card-flat {
+    @apply bg-card rounded-xl border border-border overflow-hidden;
+    @apply transition-all duration-300 hover:border-primary/30;
+  }
+
+  /* Input Styles */
+  .input-modern {
+    @apply w-full px-4 py-3 text-sm bg-muted border-0 rounded-lg;
+    @apply placeholder:text-muted-foreground/50;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20;
+  }
+
+  /* Booking Form Bar */
+  .booking-bar {
+    @apply flex flex-col md:flex-row items-stretch bg-white rounded-xl md:rounded-full shadow-xl overflow-hidden;
+  }
+
+  .booking-bar-item {
+    @apply flex-1 px-6 py-4 border-b md:border-b-0 md:border-r border-border last:border-0;
+    @apply flex flex-col gap-1;
+  }
+
+  .booking-bar-label {
+    @apply text-xs font-medium text-muted-foreground uppercase tracking-wide;
+  }
+
+  .booking-bar-value {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  /* Tour Package Card */
+  .tour-card {
+    @apply relative flex-shrink-0 w-64 md:w-72 rounded-2xl overflow-hidden;
+    @apply bg-white shadow-lg transition-all duration-300;
+    @apply hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Stat Badge */
+  .stat-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium;
+    @apply bg-primary/10 text-primary rounded-full;
+  }
+
+  /* FAQ Accordion */
+  .faq-item {
+    @apply border-b border-border py-4 cursor-pointer;
+    @apply transition-colors hover:bg-muted/50;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-sm font-medium text-foreground/70 hover:text-foreground transition-colors;
+  }
+
+  .nav-link-active {
+    @apply text-sm font-medium text-primary;
+  }
+
+  /* Testimonial Card */
+  .testimonial-card {
+    @apply relative rounded-2xl overflow-hidden;
+    @apply bg-primary text-primary-foreground p-8 md:p-12;
+  }
+
+  /* Profile Avatar */
+  .avatar {
+    @apply w-12 h-12 rounded-full object-cover border-2 border-white;
+  }
+
+  .avatar-lg {
+    @apply w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg;
+  }
+
+  /* Section Backgrounds */
+  .section-cream {
+    @apply bg-secondary;
+  }
+
+  .section-navy {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Transport Icon */
+  .transport-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-full bg-accent text-accent-foreground;
   }
 
   /* Horizontal Scroll */
@@ -191,102 +247,17 @@
   }
 
   .horizontal-scroll>* {
-    @apply snap-start flex-shrink-0;
+    @apply snap-start;
   }
 
-  /* Button Variants - Modern Glassmorphism Style */
-  .btn-luxury {
-    @apply relative inline-flex items-center justify-center gap-3 px-8 py-4 text-sm uppercase tracking-[0.15em] font-semibold transition-all duration-500 overflow-hidden;
-    background: linear-gradient(135deg, hsl(43 66% 52%) 0%, hsl(38 70% 45%) 50%, hsl(43 66% 52%) 100%);
-    background-size: 200% 200%;
-    @apply text-primary-foreground rounded-full;
-    box-shadow: 0 4px 15px hsl(43 66% 52% / 0.3), inset 0 1px 0 hsl(0 0% 100% / 0.2);
+  /* CTA Section Gradient */
+  .cta-gradient {
+    background: linear-gradient(135deg, #1a3a4a 0%, #2a5a6a 50%, #d4956a 100%);
   }
 
-  .btn-luxury::before {
-    content: '';
-    @apply absolute inset-0 rounded-full opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, hsl(0 0% 100% / 0.2) 0%, transparent 50%);
-  }
-
-  .btn-luxury:hover {
-    background-position: 100% 100%;
-    box-shadow: 0 8px 30px hsl(43 66% 52% / 0.5), inset 0 1px 0 hsl(0 0% 100% / 0.3);
-    transform: translateY(-3px) scale(1.02);
-  }
-
-  .btn-luxury:hover::before {
-    @apply opacity-100;
-  }
-
-  .btn-luxury:active {
-    transform: translateY(-1px) scale(0.98);
-  }
-
-  .btn-outline-luxury {
-    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 text-sm uppercase tracking-[0.15em] font-semibold transition-all duration-500 overflow-hidden;
-    @apply border-2 border-primary/60 text-primary rounded-full;
-    background: hsl(43 66% 52% / 0.05);
-    backdrop-filter: blur(10px);
-  }
-
-  .btn-outline-luxury::before {
-    content: '';
-    @apply absolute inset-0 rounded-full transition-all duration-500;
-    background: linear-gradient(135deg, hsl(43 66% 52%) 0%, hsl(38 70% 45%) 100%);
-    transform: scaleX(0);
-    transform-origin: left;
-    z-index: -1;
-  }
-
-  .btn-outline-luxury:hover {
-    @apply text-primary-foreground border-primary;
-    box-shadow: 0 8px 25px hsl(43 66% 52% / 0.4);
-    transform: translateY(-2px);
-  }
-
-  .btn-outline-luxury:hover::before {
-    transform: scaleX(1);
-  }
-
-  .btn-outline-luxury:active {
-    transform: translateY(0);
-  }
-
-  /* Vibe Selector - Modern Pill Style for White Background */
-  .vibe-option {
-    @apply px-8 py-3 text-sm uppercase tracking-[0.15em] font-semibold cursor-pointer transition-all duration-300;
-    @apply border-2 border-gray-300 text-gray-700 rounded-full;
-    background: transparent;
-  }
-
-  .vibe-option:hover {
-    @apply border-primary text-gray-900;
-    background: hsl(43 66% 52% / 0.1);
-  }
-
-  .vibe-option.active {
-    @apply border-primary text-white;
-    background: linear-gradient(135deg, hsl(43 66% 52%) 0%, hsl(38 70% 45%) 100%);
-    box-shadow: 0 4px 20px hsl(43 66% 52% / 0.4);
-  }
-
-  /* Budget Card States */
-  .budget-card {
-    @apply transition-all duration-500;
-  }
-
-  .budget-card.out-of-budget {
-    @apply opacity-40 grayscale;
-  }
-
-  .budget-card.perfect-match {
-    box-shadow: var(--shadow-glow);
-  }
-
-  .budget-card.perfect-match::before {
-    content: '';
-    @apply absolute inset-0 border border-primary rounded-sm pointer-events-none;
+  /* Rating Stars */
+  .rating-stars {
+    @apply flex items-center gap-0.5 text-amber-400;
   }
 }
 
@@ -295,88 +266,38 @@
   /* Text Gradient */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-gold);
+    background-image: linear-gradient(135deg, hsl(197 47% 20%), hsl(197 47% 35%));
   }
 
-  /* Image Overlay */
-  .image-overlay::after {
-    content: '';
-    @apply absolute inset-0;
-    background: var(--gradient-overlay);
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full;
   }
 
-  /* Glassmorphism Slider Track */
-  .slider-glassmorphism {
-    @apply relative rounded-full;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+  .badge-primary {
+    @apply bg-primary text-primary-foreground;
   }
 
-  .slider-glassmorphism [data-radix-slider-track] {
-    @apply relative h-3 w-full rounded-full;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+  .badge-secondary {
+    @apply bg-secondary text-secondary-foreground;
   }
 
-  .slider-glassmorphism [data-radix-slider-range] {
-    @apply absolute h-full rounded-full;
-    background: var(--gradient-gold);
+  .badge-accent {
+    @apply bg-accent text-accent-foreground;
   }
 
-  .slider-glassmorphism [data-radix-slider-thumb] {
-    @apply block h-6 w-6 rounded-full border-2 border-primary shadow-lg;
-    background: var(--gradient-gold);
-    box-shadow: 0 0 20px hsl(43 66% 52% / 0.5);
-    transition: transform 0.2s, box-shadow 0.2s;
+  /* Circle Button */
+  .btn-circle {
+    @apply w-10 h-10 flex items-center justify-center rounded-full;
+    @apply bg-primary text-primary-foreground;
+    @apply hover:bg-primary/90 transition-colors;
   }
 
-  .slider-glassmorphism [data-radix-slider-thumb]:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 30px hsl(43 66% 52% / 0.7);
-  }
-
-  .slider-glassmorphism [data-radix-slider-thumb]:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px hsl(43 66% 52% / 0.3), 0 0 30px hsl(43 66% 52% / 0.7);
-  }
-
-  /* Pulsing Badge Animation */
-  @keyframes pulse-glow {
-
-    0%,
-    100% {
-      box-shadow: 0 0 5px hsl(43 66% 52% / 0.5), 0 0 10px hsl(43 66% 52% / 0.3);
-    }
-
-    50% {
-      box-shadow: 0 0 15px hsl(43 66% 52% / 0.8), 0 0 25px hsl(43 66% 52% / 0.5);
-    }
-  }
-
-  .badge-pulse {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  /* Timeline Gold Line */
-  .timeline-gold-line {
-    @apply absolute left-6 top-0 bottom-0 w-px;
-    background: linear-gradient(180deg,
-        transparent 0%,
-        hsl(43 66% 52%) 10%,
-        hsl(43 66% 52%) 90%,
-        transparent 100%);
-  }
-
-  .timeline-dot {
-    @apply absolute left-6 w-3 h-3 rounded-full border-2 border-primary -translate-x-1/2;
-    background: hsl(var(--background));
-    transition: all 0.3s ease;
-  }
-
-  .timeline-dot.active {
-    background: hsl(var(--primary));
-    box-shadow: 0 0 15px hsl(43 66% 52% / 0.6);
+  /* Arrow Button */
+  .btn-arrow {
+    @apply w-10 h-10 flex items-center justify-center rounded-full;
+    @apply bg-white text-foreground border border-border;
+    @apply hover:border-primary hover:text-primary transition-all;
   }
 
   /* WhatsApp Floating Button */
@@ -393,5 +314,20 @@
   .whatsapp-button:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+  }
+
+  /* Line Clamp */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
