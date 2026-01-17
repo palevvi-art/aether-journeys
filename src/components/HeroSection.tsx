@@ -34,7 +34,7 @@ const HeroSection = () => {
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 h-10">
             <span className="text-xl md:text-2xl font-medium text-primary italic leading-none">
-              Aether
+              Aether Tour and Travel
             </span>
           </a>
 

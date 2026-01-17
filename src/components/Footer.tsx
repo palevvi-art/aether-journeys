@@ -133,12 +133,12 @@ const Footer = () => {
         >
           <div className="flex items-center gap-4">
             <span className="text-xl font-medium italic">
-              Aether
+              Aether Tour and Travel
             </span>
           </div>
 
           <p className="text-sm opacity-70">
-            © 2026 Aether. All Rights Reserved.
+            © 2026 Aether Tour and Travel. All Rights Reserved.
           </p>
 
           {/* Social Links */}
