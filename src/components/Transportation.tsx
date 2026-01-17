@@ -36,7 +36,7 @@ const Transportation = () => {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     return (
-        <section ref={sectionRef} className="py-20 section-cream" id="transport">
+        <section ref={sectionRef} className="py-20 section-cream" id="about">
             <div className="container max-w-7xl mx-auto px-6 md:px-12">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Left - Content */}
@@ -56,28 +56,36 @@ const Transportation = () => {
 
                         {/* Transport Options */}
                         <div className="space-y-4">
-                            {transportOptions.map((option, index) => (
-                                <motion.div
-                                    key={option.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                                    className="flex items-start gap-4 p-4 rounded-xl bg-white hover:shadow-md transition-shadow cursor-pointer group"
-                                >
-                                    <div className="transport-icon flex-shrink-0">
-                                        <option.icon className="w-5 h-5" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                                            {option.title}
-                                        </h3>
-                                        <p className="text-sm text-muted-foreground line-clamp-2">
-                                            {option.description}
-                                        </p>
-                                    </div>
-                                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
-                                </motion.div>
-                            ))}
+                            {transportOptions.map((option, index) => {
+                                const message = `Hi, I'm interested in your ${option.title} service. Can you provide more information?`;
+                                const whatsappUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(message)}`;
+
+                                return (
+                                    <motion.a
+                                        key={option.title}
+                                        href={whatsappUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                                        transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                                        className="flex items-start gap-4 p-4 rounded-xl bg-white hover:shadow-md transition-shadow cursor-pointer group"
+                                    >
+                                        <div className="transport-icon flex-shrink-0">
+                                            <option.icon className="w-5 h-5" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                                                {option.title}
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground line-clamp-2">
+                                                {option.description}
+                                            </p>
+                                        </div>
+                                        <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                                    </motion.a>
+                                );
+                            })}
                         </div>
                     </motion.div>
 

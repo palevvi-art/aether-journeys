@@ -28,9 +28,9 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-50 px-6 md:px-12 py-6"
+        className="relative z-50 py-6"
       >
-        <div className="container max-w-7xl mx-auto flex items-center justify-between">
+        <div className="container max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 h-10">
             <span className="text-xl md:text-2xl font-medium text-primary italic leading-none">
