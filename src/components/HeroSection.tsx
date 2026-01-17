@@ -1,12 +1,25 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Users, Search, Plane, User } from "lucide-react";
+import { MapPin, ArrowRight, Plane, User, ChevronDown } from "lucide-react";
+
+const destinations = [
+  "Bali, Indonesia",
+  "Raja Ampat, Papua",
+  "Mount Bromo, East Java",
+  "Komodo Island, NTT",
+  "Borobudur, Central Java",
+  "Lake Toba, North Sumatra",
+];
 
 const HeroSection = () => {
-  const [location] = useState("Bali, Indonesia");
-  const [checkIn] = useState("22 January 2025");
-  const [checkOut] = useState("30 January 2025");
-  const [people] = useState("4 People, 1Child");
+  const [selectedDestination, setSelectedDestination] = useState(destinations[0]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleGetQuote = () => {
+    const message = `Hi, I'm interested in a tour to ${selectedDestination}. Can you help me plan my trip?`;
+    const whatsappUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
     <section className="relative bg-white min-h-screen">
@@ -43,12 +56,20 @@ const HeroSection = () => {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+            <a
+              href="#tours"
+              className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors cursor-pointer"
+              title="View Tours"
+            >
               <Plane className="w-4 h-4" />
-            </button>
-            <button className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+            </a>
+            <a
+              href="#contact"
+              className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors cursor-pointer"
+              title="Contact Us"
+            >
               <User className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       </motion.nav>
@@ -81,13 +102,13 @@ const HeroSection = () => {
               Discover the beauty of Indonesia—from Bali's temples to Raja Ampat's reefs.
               Your trusted local tour partner since 2010.
             </p>
-            <button className="btn-primary">
-              Book Now
-            </button>
+            <a href="#tours" className="btn-primary">
+              Explore Tours
+            </a>
           </motion.div>
         </div>
 
-        {/* Main Image with Booking Bar */}
+        {/* Main Image with Simplified Destination Picker */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,48 +124,51 @@ const HeroSection = () => {
             />
           </div>
 
-          {/* Booking Bar - Overlapping bottom of image */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full max-w-3xl px-4">
-            <div className="bg-white rounded-full shadow-xl px-6 py-4 flex flex-col md:flex-row items-stretch md:items-center gap-4">
-              {/* Location */}
-              <div className="flex items-center gap-3 flex-1 border-b md:border-b-0 md:border-r border-gray-200 pb-3 md:pb-0 md:pr-6">
-                <MapPin className="w-5 h-5 text-muted-foreground" />
-                <div>
-                  <p className="text-xs text-muted-foreground">Location</p>
-                  <p className="text-sm font-medium text-foreground">{location}</p>
-                </div>
+          {/* Simplified Destination Picker */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full max-w-xl px-4">
+            <div className="bg-white rounded-full shadow-xl px-4 py-3 flex items-center gap-3">
+              {/* Destination Dropdown */}
+              <div className="relative flex-1">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-50 rounded-full transition-colors"
+                >
+                  <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs text-muted-foreground">Choose Destination</p>
+                    <p className="text-sm font-medium text-foreground truncate">{selectedDestination}</p>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {/* Dropdown Menu */}
+                {isDropdownOpen && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 z-50">
+                    {destinations.map((dest) => (
+                      <button
+                        key={dest}
+                        onClick={() => {
+                          setSelectedDestination(dest);
+                          setIsDropdownOpen(false);
+                        }}
+                        className={`w-full px-4 py-3 text-left text-sm hover:bg-gray-50 transition-colors flex items-center gap-3 ${selectedDestination === dest ? 'text-primary font-medium' : 'text-foreground'
+                          }`}
+                      >
+                        <MapPin className="w-4 h-4" />
+                        {dest}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              {/* Check In */}
-              <div className="flex items-center gap-3 flex-1 border-b md:border-b-0 md:border-r border-gray-200 pb-3 md:pb-0 md:pr-6">
-                <Calendar className="w-5 h-5 text-muted-foreground" />
-                <div>
-                  <p className="text-xs text-muted-foreground">Check In</p>
-                  <p className="text-sm font-medium text-foreground">{checkIn}</p>
-                </div>
-              </div>
-
-              {/* Check Out */}
-              <div className="flex items-center gap-3 flex-1 border-b md:border-b-0 md:border-r border-gray-200 pb-3 md:pb-0 md:pr-6">
-                <Calendar className="w-5 h-5 text-muted-foreground" />
-                <div>
-                  <p className="text-xs text-muted-foreground">Check Out</p>
-                  <p className="text-sm font-medium text-foreground">{checkOut}</p>
-                </div>
-              </div>
-
-              {/* People */}
-              <div className="flex items-center gap-3 flex-1">
-                <Users className="w-5 h-5 text-muted-foreground" />
-                <div>
-                  <p className="text-xs text-muted-foreground">People</p>
-                  <p className="text-sm font-medium text-foreground">{people}</p>
-                </div>
-              </div>
-
-              {/* Search Button */}
-              <button className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center flex-shrink-0">
-                <Search className="w-5 h-5" />
+              {/* Get Quote Button */}
+              <button
+                onClick={handleGetQuote}
+                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded-full hover:bg-primary/90 transition-colors flex-shrink-0"
+              >
+                Get Quote
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
