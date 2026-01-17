@@ -76,9 +76,9 @@ const Testimonials = () => {
                     className="text-center mb-12"
                 >
                     <p className="text-sm uppercase tracking-widest text-white/60 mb-3">Testimonials</p>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-light italic text-white mb-4">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
                         Your Next<br />
-                        <span className="font-normal">Adventure Awaits</span>
+                        <span className="text-white/90">Adventure Awaits</span>
                     </h2>
                     <p className="text-white/60 max-w-2xl mx-auto">
                         Real experiences from our travelers. See how they enjoyed a trip specially designed to provide the best experience.
