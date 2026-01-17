@@ -1,62 +1,40 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import destSantorini from "@/assets/dest-santorini.jpg";
-import destKyoto from "@/assets/dest-kyoto.jpg";
-import destAlps from "@/assets/dest-alps.jpg";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import journeyData from "../../data.json";
 
-const itinerary = [
-  {
-    day: 1,
-    title: "Arrival & Awakening",
-    time: "Morning",
-    activity: "Private seaplane transfer to your overwater villa. Settle in with a champagne welcome and panoramic ocean views.",
-    image: destSantorini,
-    details: [
-      "VIP airport meet & greet",
-      "Scenic 45-minute seaplane journey",
-      "Private villa orientation",
-      "Sunset welcome dinner",
-    ],
-  },
-  {
-    day: 2,
-    title: "Sacred Explorations",
-    time: "Full Day",
-    activity: "Dawn meditation at an ancient temple, followed by a curated cultural immersion with local artisans.",
-    image: destKyoto,
-    details: [
-      "5:30 AM temple meditation",
-      "Traditional breakfast ceremony",
-      "Private craft workshop",
-      "Evening garden stroll",
-    ],
-  },
-  {
-    day: 3,
-    title: "Summit & Soul",
-    time: "Full Day",
-    activity: "Guided alpine expedition to breathtaking viewpoints, concluding with a private chef dinner at 3,000 meters.",
-    image: destAlps,
-    details: [
-      "Helicopter transfer to base camp",
-      "6-hour guided summit trek",
-      "Gourmet mountain picnic",
-      "Stargazing dinner experience",
-    ],
-  },
-];
+// Define the type for our journey data
+interface JourneyItinerary {
+  day: number;
+  activity: string;
+  description: string;
+  image: string;
+}
+
+interface Journey {
+  id: number;
+  title: string;
+  location: string;
+  price: number;
+  mood: string;
+  hero_image: string;
+  description: string;
+  itinerary: JourneyItinerary[];
+}
+
+const journeys = journeyData as Journey[];
 
 const ItineraryTimeline = () => {
-  const [expandedDay, setExpandedDay] = useState<string | undefined>("day-1");
+  const [selectedJourney, setSelectedJourney] = useState<number>(0);
+  const [expandedDay, setExpandedDay] = useState<number | null>(null);
+
+  const currentJourney = journeys[selectedJourney];
+
+  const handleDayClick = (day: number) => {
+    setExpandedDay(expandedDay === day ? null : day);
+  };
 
   return (
-    <section className="relative py-32 bg-background" id="experiences">
+    <section className="relative py-32 bg-background" id="jadwal">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="h-full w-full" style={{
@@ -65,121 +43,196 @@ const ItineraryTimeline = () => {
         }} />
       </div>
 
-      <div className="container max-w-6xl mx-auto px-6 relative z-10">
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <p className="text-label text-primary mb-4">Sample Itinerary</p>
+          <p className="text-label text-primary mb-4">Jadwal Perjalanan</p>
           <h2 className="heading-section mb-6">
-            Your Journey, <span className="text-gradient">Day by Day</span>
+            Setiap Momen <span className="text-gradient">Dikurasi dengan Sempurna</span>
           </h2>
           <p className="text-body max-w-2xl mx-auto">
-            Every moment is curated. Every experience, unforgettable.
+            Nikmati perjalanan yang dirancang khusus untuk menciptakan kenangan tak terlupakan.
           </p>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border transform md:-translate-x-1/2" />
-
-          <Accordion
-            type="single"
-            collapsible
-            value={expandedDay}
-            onValueChange={setExpandedDay}
-            className="space-y-12"
-          >
-            {itinerary.map((item, index) => (
-              <motion.div
-                key={item.day}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row items-start gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+        {/* Journey Selector Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex justify-center gap-4 mb-16"
+        >
+          {journeys.map((journey, index) => (
+            <button
+              key={journey.id}
+              onClick={() => {
+                setSelectedJourney(index);
+                setExpandedDay(null);
+              }}
+              className={`px-6 py-3 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-300 rounded-sm border ${selectedJourney === index
+                  ? "border-primary text-primary bg-primary/10"
+                  : "border-muted-foreground/20 text-muted-foreground hover:border-primary/50 hover:text-foreground"
                 }`}
+            >
+              {journey.location}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Timeline */}
+        <LayoutGroup>
+          <div className="relative pl-12 md:pl-16">
+            {/* Gold Vertical Line */}
+            <div className="timeline-gold-line" />
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentJourney.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-6"
               >
-                {/* Day Marker */}
-                <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1">
-                  <motion.div
-                    animate={{
-                      scale: expandedDay === `day-${item.day}` ? 1.2 : 1,
-                      backgroundColor: expandedDay === `day-${item.day}` 
-                        ? "hsl(var(--primary))" 
-                        : "hsl(var(--background))",
-                    }}
-                    className="w-4 h-4 rounded-full border-2 border-primary"
-                  />
-                </div>
+                {currentJourney.itinerary.map((item, index) => {
+                  const isExpanded = expandedDay === item.day;
 
-                {/* Content Side */}
-                <div className={`flex-1 pl-8 md:pl-0 ${index % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}>
-                  <AccordionItem value={`day-${item.day}`} className="border-none">
-                    <AccordionTrigger className="hover:no-underline group py-0">
-                      <div className={`text-left ${index % 2 === 0 ? "md:text-right" : "md:text-left"} w-full`}>
-                        <span className="text-label text-primary text-[10px] block mb-2">
-                          Day {item.day} · {item.time}
-                        </span>
-                        <h3 className="font-serif text-2xl md:text-3xl font-medium mb-2 group-hover:text-primary transition-colors">
-                          {item.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm max-w-md">
-                          {item.activity}
-                        </p>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="pt-6">
-                      <AnimatePresence>
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className={`flex flex-col gap-4 ${index % 2 === 0 ? "md:items-end" : "md:items-start"}`}
-                        >
+                  return (
+                    <motion.div
+                      key={`${currentJourney.id}-day-${item.day}`}
+                      layout
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="relative"
+                    >
+                      {/* Timeline Dot */}
+                      <motion.div
+                        className={`timeline-dot ${isExpanded ? "active" : ""}`}
+                        animate={{
+                          scale: isExpanded ? 1.3 : 1,
+                        }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      />
+
+                      {/* Day Card */}
+                      <motion.div
+                        layout
+                        onClick={() => handleDayClick(item.day)}
+                        className={`relative p-6 rounded-sm cursor-pointer transition-all duration-300 ${isExpanded
+                            ? "bg-card border border-primary/30"
+                            : "bg-card/50 border border-transparent hover:border-muted-foreground/20"
+                          }`}
+                        style={{
+                          boxShadow: isExpanded
+                            ? "0 10px 40px hsl(0 0% 0% / 0.4), 0 0 30px hsl(43 66% 52% / 0.1)"
+                            : "none",
+                        }}
+                      >
+                        {/* Day Header */}
+                        <motion.div layout="position" className="flex items-start justify-between">
+                          <div>
+                            <span className="text-label text-primary text-[10px] block mb-2">
+                              Hari {item.day}
+                            </span>
+                            <h3 className="font-serif text-xl md:text-2xl font-medium text-foreground">
+                              {item.activity}
+                            </h3>
+                          </div>
                           <motion.div
-                            layoutId={`image-${item.day}`}
-                            className="relative w-full md:w-80 aspect-video rounded-sm overflow-hidden card-glow"
+                            animate={{ rotate: isExpanded ? 180 : 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-primary"
                           >
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="w-full h-full object-cover"
-                            />
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
                           </motion.div>
-                          <ul className={`space-y-2 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                            {item.details.map((detail, i) => (
-                              <motion.li
-                                key={i}
-                                initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="text-muted-foreground text-sm flex items-center gap-2"
-                                style={{ flexDirection: index % 2 === 0 ? "row-reverse" : "row" }}
-                              >
-                                <span className="w-1 h-1 rounded-full bg-primary" />
-                                {detail}
-                              </motion.li>
-                            ))}
-                          </ul>
                         </motion.div>
-                      </AnimatePresence>
-                    </AccordionContent>
-                  </AccordionItem>
-                </div>
 
-                {/* Empty Side for Layout */}
-                <div className="hidden md:block flex-1" />
+                        {/* Expanded Content */}
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pt-6 space-y-4">
+                                {/* Activity Image */}
+                                <motion.div
+                                  layoutId={`image-${currentJourney.id}-${item.day}`}
+                                  className="relative w-full aspect-video rounded-sm overflow-hidden"
+                                >
+                                  <img
+                                    src={item.image}
+                                    alt={item.activity}
+                                    className="w-full h-full object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+                                </motion.div>
+
+                                {/* Description */}
+                                <motion.p
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: 0.2 }}
+                                  className="text-muted-foreground text-sm leading-relaxed"
+                                >
+                                  {item.description}
+                                </motion.p>
+
+                                {/* Details */}
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.3 }}
+                                  className="flex flex-wrap gap-3 pt-2"
+                                >
+                                  {[
+                                    "Termasuk Transportasi",
+                                    "Guide Profesional",
+                                    "Makan Siang",
+                                  ].map((detail, i) => (
+                                    <span
+                                      key={i}
+                                      className="text-[10px] uppercase tracking-widest text-primary/80 border border-primary/30 px-3 py-1.5 rounded-sm"
+                                    >
+                                      {detail}
+                                    </span>
+                                  ))}
+                                </motion.div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
-            ))}
-          </Accordion>
-        </div>
+            </AnimatePresence>
+          </div>
+        </LayoutGroup>
       </div>
     </section>
   );

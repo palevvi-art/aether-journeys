@@ -1,0 +1,48 @@
+[
+    {
+        "id": 1,
+        "title": "The Silent Sanctuary",
+        "location": "Ubud, Bali",
+        "price": 18500000,
+        "mood": "Solitude",
+        "hero_image": "/ubud-bali-hero.png",
+        "description": "Temukan ketenangan jiwa di jantung spiritualitas Bali, di mana kesunyian berbicara lebih lantang dari kata-kata.",
+        "itinerary": [
+            {
+                "day": 1,
+                "activity": "VIP Airport Transfer & Mandapa Check-in",
+                "description": "Penjemputan eksklusif dari Bandara Ngurah Rai dengan armada premium. Check-in di Mandapa, a Ritz-Carlton Reserve, dengan welcome ceremony tradisional Bali.",
+                "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"
+            },
+            {
+                "day": 2,
+                "activity": "Private Temple Blessing & Sound Healing",
+                "description": "Upacara pemberkatan pribadi di pura tersembunyi, dilanjutkan dengan sesi sound healing menggunakan singing bowl Tibet di tepi sungai Ayung.",
+                "image": "https://images.unsplash.com/photo-1544644181-1484b3fdfc62"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Ocean Odyssey",
+        "location": "Raja Ampat, Papua",
+        "price": 82000000,
+        "mood": "Adventure",
+        "hero_image": "https://images.unsplash.com/photo-1516690561799-46d8f74f90f6",
+        "description": "Ekspedisi epik mengarungi surga bahari terakhir di bumi, di mana laut menyimpan rahasia yang belum terungkap.",
+        "itinerary": [
+            {
+                "day": 1,
+                "activity": "Boarding Luxury Phinisi in Sorong",
+                "description": "Perjalanan dimulai dengan boarding kapal Phinisi mewah di pelabuhan Sorong. Nikmati welcome dinner dengan panorama sunset spektakuler.",
+                "image": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd"
+            },
+            {
+                "day": 2,
+                "activity": "Sunrise Trekking at Piaynemo",
+                "description": "Trekking dini hari menuju puncak Piaynemo untuk menyaksikan matahari terbit di atas gugusan karst ikonik Raja Ampat.",
+                "image": "https://images.unsplash.com/photo-1534469647711-a3a88c579d47"
+            }
+        ]
+    }
+]

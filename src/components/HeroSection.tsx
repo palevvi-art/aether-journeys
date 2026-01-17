@@ -1,37 +1,62 @@
 import { useState } from "react";
 import { motion, AnimatePresence, type Variants, type Easing } from "framer-motion";
-import heroSolitude from "@/assets/hero-solitude.jpg";
-import heroAdventure from "@/assets/hero-adventure.jpg";
-import heroSpiritual from "@/assets/hero-spiritual.jpg";
+import journeyData from "../../data.json";
 
-type Vibe = "solitude" | "adventure" | "spiritual";
+// Define the type for our journey data
+interface JourneyItinerary {
+  day: number;
+  activity: string;
+  description: string;
+  image: string;
+}
 
-const vibeContent = {
-  solitude: {
-    image: heroSolitude,
-    headline: ["Find Your", "Stillness"],
-    subline: "Where silence speaks and time drifts away",
+interface Journey {
+  id: number;
+  title: string;
+  location: string;
+  price: number;
+  mood: string;
+  hero_image: string;
+  description: string;
+  itinerary: JourneyItinerary[];
+}
+
+type MoodType = "Solitude" | "Adventure";
+
+// Map mood to vibe content
+const vibeContent: Record<MoodType, {
+  image: string;
+  headline: string[];
+  subline: string;
+  location: string;
+}> = {
+  Solitude: {
+    image: (journeyData as Journey[]).find(j => j.mood === "Solitude")?.hero_image || "",
+    headline: ["Temukan", "Kedamaian"],
+    subline: "Di mana kesunyian berbicara dan waktu mengalir tanpa batas",
+    location: (journeyData as Journey[]).find(j => j.mood === "Solitude")?.location || "",
   },
-  adventure: {
-    image: heroAdventure,
-    headline: ["Chase The", "Horizon"],
-    subline: "Where every summit reveals a new beginning",
+  Adventure: {
+    image: (journeyData as Journey[]).find(j => j.mood === "Adventure")?.hero_image || "",
+    headline: ["Kejar", "Cakrawala"],
+    subline: "Di mana setiap puncak mengungkap awal yang baru",
+    location: (journeyData as Journey[]).find(j => j.mood === "Adventure")?.location || "",
   },
-  spiritual: {
-    image: heroSpiritual,
-    headline: ["Awaken", "Within"],
-    subline: "Where ancient wisdom meets modern soul",
-  },
+};
+
+const moodLabels: Record<MoodType, string> = {
+  Solitude: "Ketenangan",
+  Adventure: "Petualangan",
 };
 
 const easeOut: Easing = [0.16, 1, 0.3, 1];
 const easeIn: Easing = [0.7, 0, 0.84, 0];
 
 const HeroSection = () => {
-  const [activeVibe, setActiveVibe] = useState<Vibe>("solitude");
+  const [activeVibe, setActiveVibe] = useState<MoodType>("Solitude");
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleVibeChange = (vibe: Vibe) => {
+  const handleVibeChange = (vibe: MoodType) => {
     if (vibe !== activeVibe && !isAnimating) {
       setIsAnimating(true);
       setActiveVibe(vibe);
@@ -42,44 +67,44 @@ const HeroSection = () => {
   // Split headline animation variants
   const splitTopVariants: Variants = {
     enter: { y: 60, opacity: 0 },
-    animate: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.5, delay: 0.3, ease: easeOut } 
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, delay: 0.3, ease: easeOut }
     },
-    exit: { 
-      y: -80, 
-      opacity: 0, 
-      transition: { duration: 0.4, ease: easeIn } 
+    exit: {
+      y: -80,
+      opacity: 0,
+      transition: { duration: 0.4, ease: easeIn }
     },
   };
 
   const splitBottomVariants: Variants = {
     enter: { y: -60, opacity: 0 },
-    animate: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.5, delay: 0.4, ease: easeOut } 
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, delay: 0.4, ease: easeOut }
     },
-    exit: { 
-      y: 80, 
-      opacity: 0, 
-      transition: { duration: 0.4, ease: easeIn } 
+    exit: {
+      y: 80,
+      opacity: 0,
+      transition: { duration: 0.4, ease: easeIn }
     },
   };
 
   // Ken Burns background animation
   const kenBurnsVariants: Variants = {
     initial: { scale: 1.15, opacity: 0 },
-    animate: { 
-      scale: 1, 
+    animate: {
+      scale: 1,
       opacity: 1,
-      transition: { 
+      transition: {
         scale: { duration: 12, ease: "linear" as Easing },
         opacity: { duration: 1.2, ease: easeOut }
       }
     },
-    exit: { 
+    exit: {
       opacity: 0,
       transition: { duration: 0.8, ease: easeIn }
     },
@@ -129,17 +154,21 @@ const HeroSection = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="absolute top-8 right-8 hidden md:flex items-center gap-8"
         >
-          {["Destinations", "Experiences", "About"].map((item) => (
+          {[
+            { label: "Destinasi", href: "#destinations" },
+            { label: "Pengalaman", href: "#experiences" },
+            { label: "Tentang Kami", href: "#about" },
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               className="text-label text-foreground/80 hover:text-primary transition-colors"
             >
-              {item}
+              {item.label}
             </a>
           ))}
           <button className="btn-outline-luxury py-2 px-4 text-xs">
-            Contact
+            Hubungi Kami
           </button>
         </motion.nav>
 
@@ -151,7 +180,7 @@ const HeroSection = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-label text-primary mb-8"
           >
-            Choose Your Vibe
+            Pilih Suasana Anda
           </motion.p>
 
           {/* Split Headline Animation */}
@@ -192,10 +221,27 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="text-lg md:text-xl mb-14 text-foreground/60 font-light tracking-wide"
+              className="text-lg md:text-xl mb-6 text-foreground/60 font-light tracking-wide"
             >
               {vibeContent[activeVibe].subline}
             </motion.p>
+          </AnimatePresence>
+
+          {/* Location Badge */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`location-${activeVibe}`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+              className="mb-14"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-primary/30 text-sm text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                {vibeContent[activeVibe].location}
+              </span>
+            </motion.div>
           </AnimatePresence>
 
           {/* Vibe Selector */}
@@ -205,14 +251,14 @@ const HeroSection = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            {(Object.keys(vibeContent) as Vibe[]).map((vibe) => (
+            {(Object.keys(vibeContent) as MoodType[]).map((vibe) => (
               <button
                 key={vibe}
                 onClick={() => handleVibeChange(vibe)}
                 disabled={isAnimating}
                 className={`vibe-option ${activeVibe === vibe ? "active" : ""} ${isAnimating ? "pointer-events-none" : ""}`}
               >
-                {vibe}
+                {moodLabels[vibe]}
               </button>
             ))}
           </motion.div>
@@ -228,12 +274,9 @@ const HeroSection = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-3"
+            className="flex flex-col items-center"
           >
-            <span className="text-label text-muted-foreground text-[10px]">
-              Scroll to Explore
-            </span>
-            <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
+            <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
           </motion.div>
         </motion.div>
       </div>

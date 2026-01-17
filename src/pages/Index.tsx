@@ -2,8 +2,8 @@ import HeroSection from "@/components/HeroSection";
 import FeaturedExperiences from "@/components/FeaturedExperiences";
 import ItineraryTimeline from "@/components/ItineraryTimeline";
 import BudgetEstimator from "@/components/BudgetEstimator";
-import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
+import WhatsAppConcierge from "@/components/WhatsAppConcierge";
 
 const Index = () => {
   return (
@@ -12,8 +12,8 @@ const Index = () => {
       <FeaturedExperiences />
       <ItineraryTimeline />
       <BudgetEstimator />
-      <Newsletter />
       <Footer />
+      <WhatsAppConcierge />
     </main>
   );
 };
