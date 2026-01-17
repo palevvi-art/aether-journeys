@@ -32,8 +32,8 @@ const HeroSection = () => {
       >
         <div className="container max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-medium text-primary italic">
+          <a href="/" className="flex items-center gap-2 h-10">
+            <span className="text-xl md:text-2xl font-medium text-primary italic leading-none">
               Aether
             </span>
           </a>
