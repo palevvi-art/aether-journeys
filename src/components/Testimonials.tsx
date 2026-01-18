@@ -59,8 +59,8 @@ const Testimonials = () => {
             {/* Background Image */}
             <div className="absolute inset-0">
                 <img
-                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80"
-                    alt="Mountain landscape"
+                    src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=1600&q=80"
+                    alt="Borobudur Temple Indonesia"
                     className="w-full h-full object-cover"
                 />
                 {/* Dark overlay */}

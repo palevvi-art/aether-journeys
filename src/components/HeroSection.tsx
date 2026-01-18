@@ -118,8 +118,8 @@ const HeroSection = () => {
           {/* Main Destination Image */}
           <div className="relative rounded-3xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80"
-              alt="Mountain Adventure"
+              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1400&q=80"
+              alt="Bali Rice Terraces Indonesia"
               className="w-full h-[400px] md:h-[500px] object-cover"
             />
           </div>
